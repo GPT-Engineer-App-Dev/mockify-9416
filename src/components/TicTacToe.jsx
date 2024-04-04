@@ -21,22 +21,37 @@ const TicTacToe = () => {
   };
 
   const renderSquare = (index) => (
-    <GridItem as="button" w="100%" h="100%" bg="gray.100" border="1px" borderColor="gray.200" fontSize="6xl" fontWeight="bold" onClick={() => handleClick(index)}>
+    <GridItem
+      as="button"
+      w="100%"
+      bg="gray.100"
+      border="1px"
+      borderColor="gray.200"
+      fontSize={["4xl", "5xl", "6xl"]}
+      fontWeight="bold"
+      onClick={() => handleClick(index)}
+      sx={{
+        aspectRatio: "1",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       {board[index]}
     </GridItem>
   );
 
   return (
     <VStack spacing={8} align="center">
-      <Grid templateColumns="repeat(3, 1fr)" gap={2} w="240px" h="240px">
+      <Grid templateColumns="repeat(3, 1fr)" gap={2} maxWidth="240px" width="100%">
         {Array(9)
           .fill(null)
           .map((_, index) => renderSquare(index))}
       </Grid>
-      <Text fontSize="xl" fontWeight="bold">
+      <Text fontSize={["lg", "xl"]} fontWeight="bold" textAlign="center">
         {winner ? `Winner: ${winner}` : board.every(Boolean) ? "Draw!" : `Next Player: ${xIsNext ? "X" : "O"}`}
       </Text>
-      <Button onClick={resetGame} size="lg" colorScheme="blue">
+      <Button onClick={resetGame} size={["md", "lg"]} colorScheme="blue">
         New Game
       </Button>
     </VStack>
