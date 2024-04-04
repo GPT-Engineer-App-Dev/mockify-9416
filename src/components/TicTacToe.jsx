@@ -23,21 +23,20 @@ const TicTacToe = () => {
   const renderSquare = (index) => (
     <GridItem
       as="button"
-      w="100%"
+      w="80px"
+      h="80px"
+      p={0}
       bg="gray.100"
-      border="1px"
-      borderColor="gray.200"
-      fontSize={["4xl", "5xl", "6xl"]}
-      fontWeight="bold"
       onClick={() => handleClick(index)}
       sx={{
-        aspectRatio: "1",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
       }}
     >
-      {board[index]}
+      <Text fontSize="clamp(24px, 8vw, 40px)" lineHeight="1" fontWeight="bold">
+        {board[index]}
+      </Text>
     </GridItem>
   );
 
